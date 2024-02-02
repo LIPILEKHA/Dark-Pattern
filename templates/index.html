@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ad Detection</title>
+    <style>
+        .highlighted-ad {
+            border: 2px solid red; /* Add your highlighting style here */
+            background-color: #ffcccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ad Detection</h1>
+
+    <form method="post">
+        <label for="url">Website URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Detect Ads</button>
+    </form>
+
+    {% if url %}
+        <p>URL: {{ url }}</p>
+    {% endif %}
+
+    {% if modified_html %}
+        <div style="margin-top: 20px;">
+            <p>website with Highlighted Ads:</p>
+            <!-- Use the |safe filter to render HTML content -->
+            <div>{{ modified_html|safe }}</div>
+        </div>
+    {% endif %}
+</body>
+</html>
